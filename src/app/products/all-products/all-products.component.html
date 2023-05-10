@@ -1,0 +1,60 @@
+<!-- <pre>
+    {{ searchTerm | json}}
+</pre> -->
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5 border-warning">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let products of allproducts | filter:searchTerm:'title'">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="products.image" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{products.title}}</h5>
+                            <!-- <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+
+                            </div> -->
+                            <!-- Product price-->
+                            ${{products.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <button (click)="addtowishlist(products)" class="btn btn-outline-danger  mt-auto "  ><i class="fa fa-heart"></i></button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button (click)="addtocart(products)" class="btn btn-outline-dark mt-auto  "  ><i class="fa fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+    </div>
+    <div class="offer">
+        <div class="small container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="https://purepng.com/public/uploads/medium/purepng.com-jacketclothingjacketfashion-men-dress-wear-cloth-coat-blazer-jacket-631522326850o2zah.png" alt="" class="offer-img">
+                </div>
+                <div class="txt ">
+                    <p>Exclusively Available on My store</p>
+                    <h1>Water-repellent car coat</h1>
+                    <small>Car coat in windproof, water-repellent fabric with a collar, buttons down the front and eyelets under <br> the sleeves for increased ventilation. Diagonal front pockets, two inner pockets and a single back vent. Lined.</small>
+                    <br><button class="btnoffer"><a href="" >Buy Now &#8594;</a></button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

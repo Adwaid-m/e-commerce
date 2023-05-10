@@ -1,0 +1,87 @@
+
+<!-- empty cart -->
+<div class="container text-center ml-5" *ngIf="cartitem.length==0">
+    <div class="row">
+        <div class="col">
+            <img class="empty-gif" src="https://eurekaleap.devstudio.com.ve/images/upl/animat-shopping-cart-color.gif" alt="">
+            <h3 class="m-3">Your cart is empty</h3>
+            <button class="btn btn-primary" routerLink="/">Shop Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- table for cart -->
+<div class="container text-center  mt-5">
+    <div class="row">
+        <div class="col">
+            <table class="m-5"  >
+                <thead>
+                    <tr class="border border-3 border-dark mt-5" *ngFor="let product of cartitem,let i=index">
+                        <th >Id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartitem,let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{product.title}}</td>
+                        <td><img [src]=product.image alt="" width="100px"></td>
+                        <td> {{product.description}}</td>
+                        <td>{{product.price}}</td>
+                        <td><i (click)="removecart(product)" class="fa-solid fa-trash text-danger "></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="m-5" style="float: right;">
+                <button (click)="removeall()" class="btn btn-danger m-3">Empty Cart</button>
+                <button class="btn btn-success m-3" routerLink="">Shop More</button>
+                <button class="btn btn-warning m-3"data-bs-toggle="modal" data-bs-target="#exampleModal">Check Out</button>
+                <b>Grand Total:{{grand}}</b>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Chek out page</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>Delivery Address</h1>
+          <form action="">
+            <input type="text" placeholder="Enter your name" class="form-control mb-2">
+            <input type="text" placeholder="House No" class="form-control mb-2">
+            <input type="text" placeholder="Pincode" class="form-control mb-2">
+            <input type="text" placeholder="State" class="form-control mb-2">
+            <input type="text" placeholder="Country" class="form-control mb-2">
+            <input type="text" placeholder="Contact No" class="form-control mb-2">
+          </form>
+        </div>
+        <h3>Discounts</h3>
+        <div [ngSwitch]="grand">
+            <img (click)="discount5per" *ngSwitchCase="5" class="discount" src="https://www.shutterstock.com/image-vector/5-coupon-promotion-sale-website-260nw-2042047343.jpg" alt="">
+            <img (click)="discount10per" *ngSwitchCase="10" class="discount" src="https://www.nicepng.com/png/detail/430-4304538_10-percent-off-coupon-code-internet-coupon.png" alt="">
+            <img (click)="discount50per" *ngSwitchCase="50" class="discount" src="https://www.shutterstock.com/image-vector/gift-voucher-coupon-code-vector-260nw-1528500668.jpg" alt="">
+            <img (click)="discount5per" *ngSwitchDefault="5" class="discount" src="https://offerscouponsdeals.in/blog/wp-content/uploads/2019/04/promo-codes-travelpayouts.png" alt="">
+        </div>
+        <div>
+            <p>Your Grand Total : {{updatedgrand}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Proceed</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  

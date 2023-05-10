@@ -1,0 +1,16 @@
+table,th,td{
+    border: 2px solid blue;
+}
+img{
+    height: 220px;
+    width: 180px;
+    padding: 10px;
+}
+.empty-gif{
+    height: 400px;
+    width: 350px;
+}
+.discount{
+    width: 100px;
+    height: 80px;
+}
